@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="springProject">
+      <h2 data-cy="springProjectDetailsHeading">
+        <span jhiTranslate="xmplAngularSpringswiseApp.springProject.detail.title">Spring Project</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ springProject.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="xmplAngularSpringswiseApp.springProject.title">Title</span></dt>
+        <dd>
+          <span>{{ springProject.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="xmplAngularSpringswiseApp.springProject.description">Description</span></dt>
+        <dd>
+          <span>{{ springProject.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="xmplAngularSpringswiseApp.springProject.imagePath">Image Path</span></dt>
+        <dd>
+          <span>{{ springProject.imagePath }}</span>
+        </dd>
+        <dt><span jhiTranslate="xmplAngularSpringswiseApp.springProject.url">Url</span></dt>
+        <dd>
+          <span>{{ springProject.url }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/spring-project', springProject.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

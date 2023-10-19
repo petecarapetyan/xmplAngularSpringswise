@@ -1,0 +1,9 @@
+{
+  "home": {
+    "title": "Merhaba, Spring Wise Guy!",
+    "subtitle": "Burası Ana Sayfanız",
+    "logged": {
+      "message": "\"{{username}}\" olarak giriş yaptınız."
+    }
+  }
+}

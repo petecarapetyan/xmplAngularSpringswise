@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userHistory">
+      <h2 data-cy="userHistoryDetailsHeading">
+        <span jhiTranslate="xmplAngularSpringswiseApp.userHistory.detail.title">User History</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userHistory.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="xmplAngularSpringswiseApp.userHistory.name">Name</span></dt>
+        <dd>
+          <span>{{ userHistory.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="xmplAngularSpringswiseApp.userHistory.issue">Issue</span></dt>
+        <dd>
+          <span>{{ userHistory.issue }}</span>
+        </dd>
+        <dt><span jhiTranslate="xmplAngularSpringswiseApp.userHistory.issueDate">Issue Date</span></dt>
+        <dd>
+          <span>{{ userHistory.issueDate | formatMediumDate }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-history', userHistory.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

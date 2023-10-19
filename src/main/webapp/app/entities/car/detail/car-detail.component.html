@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="car">
+      <h2 data-cy="carDetailsHeading"><span jhiTranslate="xmplAngularSpringswiseApp.car.detail.title">Car</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ car.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="xmplAngularSpringswiseApp.car.motorSize">Motor Size</span></dt>
+        <dd>
+          <span>{{ car.motorSize }}</span>
+        </dd>
+        <dt><span jhiTranslate="xmplAngularSpringswiseApp.car.modelName">Model Name</span></dt>
+        <dd>
+          <span>{{ car.modelName }}</span>
+        </dd>
+        <dt><span jhiTranslate="xmplAngularSpringswiseApp.car.wheelSize">Wheel Size</span></dt>
+        <dd>
+          <span>{{ car.wheelSize }}</span>
+        </dd>
+        <dt><span jhiTranslate="xmplAngularSpringswiseApp.car.transmission">Transmission</span></dt>
+        <dd>
+          <span>{{ car.transmission }}</span>
+        </dd>
+        <dt><span jhiTranslate="xmplAngularSpringswiseApp.car.color">Color</span></dt>
+        <dd>
+          <span>{{ car.color }}</span>
+        </dd>
+        <dt><span jhiTranslate="xmplAngularSpringswiseApp.car.yearOf">Year Of</span></dt>
+        <dd>
+          <span>{{ car.yearOf }}</span>
+        </dd>
+        <dt><span jhiTranslate="xmplAngularSpringswiseApp.car.price">Price</span></dt>
+        <dd>
+          <span>{{ car.price }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/car', car.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

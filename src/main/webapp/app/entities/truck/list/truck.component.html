@@ -1,0 +1,99 @@
+<div>
+  <h2 id="page-heading" data-cy="TruckHeading">
+    <span jhiTranslate="xmplAngularSpringswiseApp.truck.home.title">Trucks</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="xmplAngularSpringswiseApp.truck.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-truck"
+        [routerLink]="['/truck/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="xmplAngularSpringswiseApp.truck.home.createLabel"> Create a new Truck </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="trucks?.length === 0">
+    <span jhiTranslate="xmplAngularSpringswiseApp.truck.home.notFound">No Trucks found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="trucks && trucks.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="modelName">
+            <div class="d-flex">
+              <span jhiTranslate="xmplAngularSpringswiseApp.truck.modelName">Model Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="make">
+            <div class="d-flex">
+              <span jhiTranslate="xmplAngularSpringswiseApp.truck.make">Make</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="motorSize">
+            <div class="d-flex">
+              <span jhiTranslate="xmplAngularSpringswiseApp.truck.motorSize">Motor Size</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="color">
+            <div class="d-flex">
+              <span jhiTranslate="xmplAngularSpringswiseApp.truck.color">Color</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let truck of trucks; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/truck', truck.id, 'view']">{{ truck.id }}</a>
+          </td>
+          <td>{{ truck.modelName }}</td>
+          <td>{{ truck.make }}</td>
+          <td>{{ truck.motorSize }}</td>
+          <td>{{ truck.color }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/truck', truck.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/truck', truck.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(truck)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
